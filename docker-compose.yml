@@ -1,0 +1,8 @@
+services:
+  rt-cpa-sub-generator:
+    build:
+      context: .
+    image: rt-cpa-sub-generator:local
+    ports:
+      - "8080:80"
+    restart: unless-stopped

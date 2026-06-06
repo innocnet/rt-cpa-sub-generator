@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://auth.openai.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <title>RT Token Forge</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">RT</div>
+      <div class="title-block">
+        <p class="eyebrow">Token Forge</p>
+        <h1>RT CPA/SUB 生成器</h1>
+      </div>
+      <div class="run-state" id="runState">待输入</div>
+    </header>
+
+    <section class="notice">
+      <strong>安全边界</strong>
+      <span>RT 与 access token 只保存在当前浏览器内存中；刷新请求直接发送到 <code>https://auth.openai.com/oauth/token</code>。</span>
+    </section>
+
+    <section class="workspace">
+      <div class="panel input-panel">
+        <div class="panel-head">
+          <div>
+            <h2>输入 RT</h2>
+            <p>一行一个 refresh token，自动过滤空行、非法行和重复项。</p>
+          </div>
+          <span class="pill" id="lineSummary">0 行 / 0 有效</span>
+        </div>
+
+        <textarea id="rtInput" spellcheck="false" placeholder="rt.1.ABC...&#10;rt.1.DEF...&#10;rt.1.GHI..."></textarea>
+
+        <div class="toolbar">
+          <button id="pasteBtn" type="button">粘贴</button>
+          <button id="copyValidBtn" type="button">复制有效 RT</button>
+          <button id="clearBtn" type="button" class="danger">清空</button>
+        </div>
+      </div>
+
+      <aside class="side">
+        <section class="panel action-panel">
+          <h2>刷新生成</h2>
+          <button id="runBtn" type="button" class="primary" disabled>刷新 RT 并生成</button>
+          <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+          <div class="progress-row">
+            <span id="progressText">待开始</span>
+            <span>并发 5</span>
+          </div>
+        </section>
+
+        <section class="panel download-panel">
+          <h2>下载结果</h2>
+          <button id="downloadCpaBtn" type="button" disabled>下载 CPA ZIP</button>
+          <button id="downloadSubBtn" type="button" disabled>下载 Sub2API JSON</button>
+          <button id="downloadFailedBtn" type="button" disabled>下载失败列表</button>
+        </section>
+      </aside>
+    </section>
+
+    <section class="stats" aria-label="统计">
+      <div class="stat"><span>非空行</span><strong id="totalCount">0</strong></div>
+      <div class="stat"><span>有效 RT</span><strong id="validCount">0</strong></div>
+      <div class="stat"><span>成功</span><strong id="successCount">0</strong></div>
+      <div class="stat"><span>失败</span><strong id="failedCount">0</strong></div>
+      <div class="stat"><span>重复</span><strong id="duplicateCount">0</strong></div>
+      <div class="stat"><span>非法</span><strong id="invalidCount">0</strong></div>
+    </section>
+
+    <section class="log-grid">
+      <div class="panel">
+        <div class="panel-head compact">
+          <h2>处理日志</h2>
+          <button id="clearLogBtn" type="button" class="small">清日志</button>
+        </div>
+        <pre id="logBox">等待开始</pre>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head compact">
+          <h2>异常 / 重复</h2>
+          <span class="pill" id="issueCount">0</span>
+        </div>
+        <pre id="issueBox">暂无异常</pre>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./rt-generator.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
