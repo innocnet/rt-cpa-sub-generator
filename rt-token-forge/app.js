@@ -1,4 +1,5 @@
-import {
+(() => {
+const {
   DEFAULT_CLIENT_ID,
   DEFAULT_REDIRECT_URI,
   buildCpaZipBytes,
@@ -9,7 +10,7 @@ import {
   parseRtInput,
   refreshToken,
   timestampedName,
-} from './rt-generator.js'
+} = window.RtTokenForge
 
 const DEFAULT_CONCURRENCY = 5
 const DEFAULT_PLAN_TYPE = 'team'
@@ -305,3 +306,4 @@ el.pasteBtn.addEventListener('click', async () => {
 
 renderParse()
 renderRun()
+})()

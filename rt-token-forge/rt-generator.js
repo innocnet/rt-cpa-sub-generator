@@ -1,9 +1,10 @@
-export const DEFAULT_CLIENT_ID = 'app_EMoamEEZ73f0CkXaXp7hrann'
-export const DEFAULT_REDIRECT_URI = 'http://localhost:1455/auth/callback'
-export const TOKEN_URL = 'https://auth.openai.com/oauth/token'
-export const RT_TOKEN_PATTERN = /^rt\.\d+\.\S+$/
+(() => {
+const DEFAULT_CLIENT_ID = 'app_EMoamEEZ73f0CkXaXp7hrann'
+const DEFAULT_REDIRECT_URI = 'http://localhost:1455/auth/callback'
+const TOKEN_URL = 'https://auth.openai.com/oauth/token'
+const RT_TOKEN_PATTERN = /^rt\.\d+\.\S+$/
 
-export const MODEL_MAPPING = {
+const MODEL_MAPPING = {
   'codex-auto-review': 'codex-auto-review',
   'gpt-4o-audio-preview': 'gpt-4o-audio-preview',
   'gpt-4o-realtime-preview': 'gpt-4o-realtime-preview',
@@ -20,7 +21,7 @@ export const MODEL_MAPPING = {
   'gpt-image-2': 'gpt-image-2',
 }
 
-export function parseRtInput(input) {
+function parseRtInput(input) {
   const validTokens = []
   const invalidRows = []
   const duplicateRows = []
@@ -50,7 +51,7 @@ export function parseRtInput(input) {
   return { totalLines, validTokens, invalidRows, duplicateRows }
 }
 
-export async function refreshToken(rt, options = {}) {
+async function refreshToken(rt, options = {}) {
   const clientId = String(options.clientId || DEFAULT_CLIENT_ID).trim()
   const redirectUri = String(options.redirectUri || DEFAULT_REDIRECT_URI).trim()
   const fetchImpl = options.fetchImpl || globalThis.fetch
@@ -97,7 +98,7 @@ export async function refreshToken(rt, options = {}) {
   }
 }
 
-export function buildCpaAuthFile(tokenResult) {
+function buildCpaAuthFile(tokenResult) {
   return {
     type: 'codex',
     access_token: tokenResult.access_token || '',
@@ -105,7 +106,7 @@ export function buildCpaAuthFile(tokenResult) {
   }
 }
 
-export function buildSub2ApiBatch(tokenResults, options = {}) {
+function buildSub2ApiBatch(tokenResults, options = {}) {
   const exportedAt = options.exportedAt || new Date().toISOString()
   const dateLabel = options.dateLabel || formatDateLabel(new Date(exportedAt))
   const clientId = String(options.clientId || DEFAULT_CLIENT_ID).trim() || DEFAULT_CLIENT_ID
@@ -157,7 +158,7 @@ export function buildSub2ApiBatch(tokenResults, options = {}) {
   }
 }
 
-export function decodeJwtPayload(token) {
+function decodeJwtPayload(token) {
   try {
     const parts = String(token || '').split('.')
     if (parts.length < 2) return {}
@@ -173,12 +174,12 @@ export function decodeJwtPayload(token) {
   }
 }
 
-export function extractAuth(payload) {
+function extractAuth(payload) {
   const auth = payload?.['https://api.openai.com/auth']
   return auth && typeof auth === 'object' ? auth : {}
 }
 
-export function extractOrganizationId(idPayload) {
+function extractOrganizationId(idPayload) {
   const auth = extractAuth(idPayload)
   const direct = String(auth.organization_id || '').trim()
   if (direct) return direct
@@ -192,7 +193,7 @@ export function extractOrganizationId(idPayload) {
   return ''
 }
 
-export function buildCpaZipBytes(tokenResults) {
+function buildCpaZipBytes(tokenResults) {
   const files = tokenResults.map((result, index) => ({
     filename: `${String(index + 1).padStart(6, '0')}.json`,
     content: JSON.stringify(buildCpaAuthFile(result), null, 2),
@@ -200,7 +201,7 @@ export function buildCpaZipBytes(tokenResults) {
   return createZipBytes(files)
 }
 
-export function buildFailedText(failures) {
+function buildFailedText(failures) {
   return failures.map((item) => {
     const line = item.lineNumber ? `line=${item.lineNumber}` : 'line=?'
     const reason = item.reason || item.error || ''
@@ -209,14 +210,14 @@ export function buildFailedText(failures) {
   }).join('\n') + (failures.length ? '\n' : '')
 }
 
-export function formatDateLabel(date = new Date()) {
+function formatDateLabel(date = new Date()) {
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const day = String(date.getDate()).padStart(2, '0')
   return `${year}${month}${day}`
 }
 
-export function timestampedName(prefix, ext) {
+function timestampedName(prefix, ext) {
   const now = new Date()
   const stamp = [
     formatDateLabel(now),
@@ -227,11 +228,11 @@ export function timestampedName(prefix, ext) {
   return `${prefix}_${stamp}.${ext}`
 }
 
-export function downloadText(filename, content, mime = 'application/json;charset=utf-8') {
+function downloadText(filename, content, mime = 'application/json;charset=utf-8') {
   downloadBlob(filename, new Blob([content], { type: mime }))
 }
 
-export function downloadBytes(filename, bytes, mime = 'application/octet-stream') {
+function downloadBytes(filename, bytes, mime = 'application/octet-stream') {
   const buffer = new ArrayBuffer(bytes.byteLength)
   new Uint8Array(buffer).set(bytes)
   downloadBlob(filename, new Blob([buffer], { type: mime }))
@@ -356,3 +357,20 @@ function getCrcTable() {
   crcTable = table
   return table
 }
+
+window.RtTokenForge = {
+  DEFAULT_CLIENT_ID,
+  DEFAULT_REDIRECT_URI,
+  TOKEN_URL,
+  RT_TOKEN_PATTERN,
+  MODEL_MAPPING,
+  buildCpaZipBytes,
+  buildFailedText,
+  buildSub2ApiBatch,
+  downloadBytes,
+  downloadText,
+  parseRtInput,
+  refreshToken,
+  timestampedName,
+}
+})()
