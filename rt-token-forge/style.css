@@ -77,7 +77,7 @@ button.small {
 }
 
 .app-shell {
-  width: min(1420px, calc(100vw - 28px));
+  width: min(1120px, calc(100vw - 28px));
   margin: 16px auto 28px;
 }
 
@@ -170,7 +170,7 @@ code {
 
 .workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(280px, .45fr);
+  grid-template-columns: minmax(0, 1fr) 280px;
   gap: 12px;
 }
 
@@ -337,7 +337,7 @@ pre {
 
 @media (max-width: 620px) {
   .app-shell {
-    width: min(100vw - 20px, 1420px);
+    width: min(100vw - 20px, 1120px);
     margin-top: 10px;
   }
 
