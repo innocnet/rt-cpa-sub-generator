@@ -78,7 +78,7 @@ button.small {
 
 .app-shell {
   width: min(1120px, calc(100vw - 28px));
-  margin: 16px auto 28px;
+  margin: 10px auto 20px;
 }
 
 .topbar {
@@ -86,8 +86,8 @@ button.small {
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 14px;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 14px 16px;
+  margin-bottom: 8px;
+  padding: 10px 14px;
   border: 1px solid var(--line-soft);
   border-radius: 8px;
   background: rgba(18, 25, 39, .82);
@@ -95,8 +95,8 @@ button.small {
 }
 
 .brand-mark {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: 8px;
@@ -156,8 +156,8 @@ h2 {
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 10px 12px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
   border: 1px solid rgba(255, 225, 163, .18);
   border-radius: 8px;
   background: var(--warning-bg);
@@ -171,7 +171,7 @@ code {
 .workspace {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
-  gap: 12px;
+  gap: 10px;
 }
 
 .panel {
@@ -179,7 +179,7 @@ code {
   border-radius: 8px;
   background: rgba(18, 25, 39, .92);
   box-shadow: var(--shadow);
-  padding: 14px;
+  padding: 12px;
 }
 
 .panel-head {
@@ -187,7 +187,7 @@ code {
   gap: 12px;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .panel-head.compact {
@@ -203,14 +203,14 @@ code {
 
 textarea {
   width: 100%;
-  min-height: 330px;
+  min-height: 300px;
   resize: vertical;
   border: 1px solid var(--line);
   border-radius: 8px;
   outline: none;
   background: #0d1422;
   color: var(--text);
-  padding: 12px;
+  padding: 10px 12px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 13px;
   line-height: 1.55;
@@ -225,7 +225,7 @@ textarea:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .toolbar button {
@@ -234,7 +234,7 @@ textarea:focus {
 
 .side {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   align-content: start;
 }
 
@@ -276,12 +276,12 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .stat {
-  min-height: 66px;
-  padding: 10px 12px;
+  min-height: 58px;
+  padding: 8px 12px;
   border: 1px solid var(--line-soft);
   border-radius: 8px;
   background: var(--panel-strong);
@@ -295,8 +295,8 @@ textarea:focus {
 
 .stat strong {
   display: block;
-  margin-top: 5px;
-  font-size: 24px;
+  margin-top: 3px;
+  font-size: 22px;
   line-height: 1;
 }
 
@@ -304,11 +304,11 @@ textarea:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 pre {
-  min-height: 180px;
+  min-height: 150px;
   max-height: 320px;
   margin: 0;
   overflow: auto;
@@ -318,7 +318,7 @@ pre {
   border-radius: 8px;
   background: #0d1422;
   color: #dce8f8;
-  padding: 12px;
+  padding: 10px 12px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 12px;
   line-height: 1.55;
@@ -338,7 +338,7 @@ pre {
 @media (max-width: 620px) {
   .app-shell {
     width: min(100vw - 20px, 1120px);
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .topbar {
@@ -361,6 +361,6 @@ pre {
   }
 
   textarea {
-    min-height: 300px;
+    min-height: 280px;
   }
 }
