@@ -13,7 +13,7 @@
   --danger: #ff6d7a;
   --warning-bg: #231d10;
   --warning: #ffe1a3;
-  --shadow: 0 18px 44px rgba(0, 0, 0, .26);
+  --shadow: 0 12px 30px rgba(0, 0, 0, .22);
 }
 
 * {
@@ -37,7 +37,7 @@ textarea {
 }
 
 button {
-  min-height: 42px;
+  min-height: 36px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #202b3e;
@@ -71,23 +71,23 @@ button.danger {
 }
 
 button.small {
-  min-height: 34px;
-  padding: 0 12px;
+  min-height: 30px;
+  padding: 0 10px;
   font-size: 12px;
 }
 
 .app-shell {
-  width: min(1220px, calc(100vw - 32px));
-  margin: 24px auto 48px;
+  width: min(1420px, calc(100vw - 28px));
+  margin: 16px auto 28px;
 }
 
 .topbar {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
-  margin-bottom: 16px;
-  padding: 20px;
+  margin-bottom: 10px;
+  padding: 14px 16px;
   border: 1px solid var(--line-soft);
   border-radius: 8px;
   background: rgba(18, 25, 39, .82);
@@ -95,8 +95,8 @@ button.small {
 }
 
 .brand-mark {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border-radius: 8px;
@@ -119,7 +119,7 @@ button.small {
 }
 
 .eyebrow {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   color: var(--accent);
   font-size: 12px;
   font-weight: 800;
@@ -127,13 +127,13 @@ button.small {
 }
 
 h1 {
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: clamp(22px, 2.4vw, 30px);
   line-height: 1.1;
   letter-spacing: 0;
 }
 
 h2 {
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: 0;
 }
 
@@ -141,8 +141,8 @@ h2 {
 .pill {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  padding: 0 12px;
+  min-height: 28px;
+  padding: 0 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #0d1422;
@@ -154,10 +154,10 @@ h2 {
 
 .notice {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
-  margin-bottom: 16px;
-  padding: 14px 16px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
   border: 1px solid rgba(255, 225, 163, .18);
   border-radius: 8px;
   background: var(--warning-bg);
@@ -170,8 +170,8 @@ code {
 
 .workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, .45fr);
+  gap: 12px;
 }
 
 .panel {
@@ -179,7 +179,7 @@ code {
   border-radius: 8px;
   background: rgba(18, 25, 39, .92);
   box-shadow: var(--shadow);
-  padding: 18px;
+  padding: 14px;
 }
 
 .panel-head {
@@ -187,7 +187,7 @@ code {
   gap: 12px;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .panel-head.compact {
@@ -195,7 +195,7 @@ code {
 }
 
 .panel p {
-  margin-top: 5px;
+  margin-top: 4px;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
@@ -203,14 +203,14 @@ code {
 
 textarea {
   width: 100%;
-  min-height: 430px;
+  min-height: 330px;
   resize: vertical;
   border: 1px solid var(--line);
   border-radius: 8px;
   outline: none;
   background: #0d1422;
   color: var(--text);
-  padding: 14px;
+  padding: 12px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 13px;
   line-height: 1.55;
@@ -224,24 +224,24 @@ textarea:focus {
 .toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .toolbar button {
-  padding: 0 14px;
+  padding: 0 12px;
 }
 
 .side {
   display: grid;
-  gap: 16px;
+  gap: 12px;
   align-content: start;
 }
 
 .action-panel,
 .download-panel {
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .download-panel button {
@@ -249,7 +249,7 @@ textarea:focus {
 }
 
 .progress {
-  height: 12px;
+  height: 9px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -275,13 +275,13 @@ textarea:focus {
 .stats {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 16px;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .stat {
-  min-height: 86px;
-  padding: 14px;
+  min-height: 66px;
+  padding: 10px 12px;
   border: 1px solid var(--line-soft);
   border-radius: 8px;
   background: var(--panel-strong);
@@ -295,21 +295,21 @@ textarea:focus {
 
 .stat strong {
   display: block;
-  margin-top: 7px;
-  font-size: 28px;
+  margin-top: 5px;
+  font-size: 24px;
   line-height: 1;
 }
 
 .log-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 pre {
-  min-height: 260px;
-  max-height: 420px;
+  min-height: 180px;
+  max-height: 320px;
   margin: 0;
   overflow: auto;
   white-space: pre-wrap;
@@ -318,7 +318,7 @@ pre {
   border-radius: 8px;
   background: #0d1422;
   color: #dce8f8;
-  padding: 14px;
+  padding: 12px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 12px;
   line-height: 1.55;
@@ -337,7 +337,7 @@ pre {
 
 @media (max-width: 620px) {
   .app-shell {
-    width: min(100vw - 20px, 1220px);
+    width: min(100vw - 20px, 1420px);
     margin-top: 10px;
   }
 
@@ -361,6 +361,6 @@ pre {
   }
 
   textarea {
-    min-height: 340px;
+    min-height: 300px;
   }
 }
